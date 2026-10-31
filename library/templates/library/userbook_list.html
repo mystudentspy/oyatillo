@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}UserBook{% endblock %}
+{% block content %}
+<h1>Barcha o'quvchilar o'qiyotgan kitoblar ro'yxati:</h1>
+<ol>
+    {% for userbook in userbooks %}
+        <li>{{ userbook.user.first_name }} - {{ userbook.book.title }}</li>
+    {% endfor %}
+</ol>
+<p>qolgan bo'limlarga o'tish:</p>
+<a href="{% url 'books' %}">kitoblar</a>
+<br>
+<a href="{% url 'users' %}">o'quvchilar</a>
+<p>asosiy oynaga qaytish:</p>
+<a href="{% url 'home' %}">uy</a>
+{% endblock %}
