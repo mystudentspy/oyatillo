@@ -4,7 +4,7 @@
 <h1>Barcha o'quvchilar ro'yxati:</h1>
 <ol>
     {% for user in users %}
-        <li>{{ user.first_name }} - {{ user.last_name }}</li>
+        <li><a href="{% url 'user' user.pk %}">{{ user.first_name }} - {{ user.last_name }}</a></li>
     {% endfor %}
 </ol>
 <p>qolgan bo'limlarga o'tish:</p>
@@ -13,4 +13,5 @@
 <a href="{% url 'userbooks' %}">o'quvchi kitoblari</a>
 <p>asosiy oynaga qaytish:</p>
 <a href="{% url 'home' %}">uy</a>
+ii
 {% endblock %}

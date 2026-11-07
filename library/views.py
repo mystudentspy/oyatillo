@@ -7,12 +7,12 @@ class HomeView(View):
     def get(self, request):
         return render(
             request,
-            "library/home.html"
+            "home.html"
         )
 
 class BookView(View):
     def get(self, request):
-        search = request.GET.get("search")
+        search = request.GET.get("search", "")
         if search:
             books = Book.objects.filter(
                 Q(title__icontains=search) |
@@ -22,7 +22,7 @@ class BookView(View):
             books = Book.objects.all()
         return render(
             request,
-            "library/book_list.html",
+            "book/book_list.html",
             {
                 "books": books,
                 "search": search
@@ -34,7 +34,7 @@ class DetailBookView(View):
         book = Book.objects.get(pk=pk)
         return render(
             request,
-            "library/detail_book.html",
+            "book/detail_book.html",
             {
                 "book": book
             }
@@ -47,7 +47,7 @@ class UserView(View):
         users = User.objects.all()
         return render(
             request,
-            "library/user_list.html",
+            "user/user_list.html",
             {
                 "users": users
             }
@@ -57,7 +57,7 @@ class DetailUserView(View):
         user =User.objects.get(pk=pk)
         return render(
             request,
-            "library/detail_user.html",
+            "user/detail_user.html",
             {
                 "user": user
             }
@@ -68,7 +68,7 @@ class UserBookView(View):
         userbooks = UserBook.objects.all()
         return render(
             request,
-            "library/userbook_list.html",
+            "userbook/userbook_list.html",
             {
                 "userbooks": userbooks
             }
@@ -78,7 +78,7 @@ class DetailUserBookView(View):
         userbook = UserBook.objects.get(pk=pk)
         return render(
             request,
-            "library/detail_userbook.html",
+            "userbook/detail_userbook.html",
             {
                 "userbook": userbook
             }

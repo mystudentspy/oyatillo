@@ -2,3 +2,4 @@ django
 Pillow
 environs
 psycopg2
+django-import-export

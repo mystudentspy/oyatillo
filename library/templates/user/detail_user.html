@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}User{% endblock %}
+{% block content %}
+
+<h1>{{ user.first_name }} haqida to'liq ma'lumot</h1>
+<h2>
+    {{ user.last_name }} bizdagi barcha isimlar {{ user.Numbers }} ta
+</h2>
+<h3>
+        {{ user.age }} isimni egasi: {{ user.first_name }}
+    nomi: {{ user.last_name }}
+</h3>
+pp
+{% endblock %}

@@ -2,7 +2,6 @@
 {% block title %}Book{% endblock %}
 {% block content %}
 <h1>Barcha kitoblar ro'yxati:</h1>
-
 <form>
     {% csrf_token %}
     <input placeholder="qidir..." name="search" value="{{ search }}">
@@ -13,14 +12,19 @@
 
 <ol>
     {% for book in books %}
-        <li>{{ book.title }} - {{ book.author }}</li>
+        <li>
+            <a href="{% url 'book' book.pk %}">
+                {{ book.title }} - {{ book.author }}
+            </a>
+        </li>
     {% endfor %}
 </ol>
-
+<a>
 <p>qolgan bo'limlarga o'tish:</p>
 <a href="{% url 'users' %}">o'quvchilar</a>
 <br>
 <a href="{% url 'userbooks' %}">o'quvchi kitoblari</a>
 <p>asosiy oynaga qaytish:</p>
 <a href="{% url 'home' %}">uy</a>
+</a>
 {% endblock %}
